@@ -89,3 +89,33 @@ def new_game_ask():
     else:
         return False
 
+
+# A function that check for both human or computer winning combos on the board and returnns the rellevan message
+def win_check(human,computer):
+    '''
+    This function check all the victorious combinations and return True or False.
+    '''
+    #First, we provide all the possible winning combinations, vertical, horizontal and diagonal
+    winning_combos = [[1,2,3],[4,5,6],[7,8,9],[1,4,7],[2,5,8],[3,6,9],[1,5,9],[3,5,7]]
+    # Then we check if the spots from inputs result to a win combo
+    for win_spot in winning_combos:
+        # Each position in the above lists should be matching combo and comes from the human input
+        if board[win_spot[0]]== board[win_spot[1]]==board[win_spot[2]]== human:
+            print ("Human wins the game! :)")
+            #And we ask human if wants to play again with assigning our function in a value ask 
+            if not new_game_ask():
+                return False
+        # then we check the same combinations for the computer
+        elif board[win_spot[0]]== board[win_spot[1]]==board[win_spot[2]]== computer:
+                print ("Computer wins the game!")
+                #And we ask human if wants to play again with assigning our function in a value ask
+                if not new_game_ask():
+                    return False
+    # if the game is completed and there is no space in the board and no winning combos then game is a tie
+    if " " not in board:
+        print ("Game is a tie!")
+        #And we ask human if wants to play again with assigning our function in a value ask
+        if not new_game_ask():
+            return False
+    return True
+
