@@ -38,3 +38,26 @@ def user_symbol_choice():
         else:
             print('Enter correct input! X or O')
 
+
+# A function for placeing the human input as a mark into the board
+def human_position_input(mark):
+    '''
+    This function will collect an input from the human user to place their mark on the board.
+    '''
+    while True:
+        position_input = input(f'Human "{mark}" Enter a position between 1-9 to place your marker.')
+        # we check if the input is digit and that is between 0 and 10 as the board has positions from 1 to 9
+        if position_input.isdigit() and int(position_input) <10 and int(position_input) >0:
+            # we assign position input to be an int
+            position_input = int(position_input)
+            # Then we check if the board is empty in that position
+            if board[position_input] == " ":
+                # and if so place the mark there
+                return position_input
+            else:
+                #in case the position is already taken we ask user to provide another position
+                print(f'Human "{mark}" Place is already taken, provide another position.')
+        # For the first condition if not siatisfied we ask the user for valid input
+        else:
+            print(f'Human "{mark}" Invalid number, please enter a number between 1 and 9.')
+
