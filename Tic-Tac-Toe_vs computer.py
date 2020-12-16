@@ -61,3 +61,31 @@ def human_position_input(mark):
         else:
             print(f'Human "{mark}" Invalid number, please enter a number between 1 and 9.')
 
+
+# A function that will ask the user after every game is finished if they want a rematch
+def new_game_ask():
+    while True:
+        rematch = input("Would you like to play again? Type Y/N.")
+        # We provide both lower case and upper case as valid inputs
+        if rematch in ["y","Y"]:
+        # we create a new variable and give it a value of True
+            next_game = True
+            break
+        # We provide both lower case and upper case as valid inputs
+        elif rematch in ["n","N"]:
+            print ("Thanks for playing, have a nice day!")
+            # we create a new variable and give it a value of False
+            next_game = False
+            break
+        else:
+            # in case anything else is given as an input a valid imput prompt pops
+            print ("Please type a valid input, Type Y/N")
+    # while the next_game is True
+    if next_game:
+        # print new game to acknowledge to the user that is a new game
+        print ("New game")
+        # start the main game function main_human_vs_computer()
+        main_human_vs_computer()
+    else:
+        return False
+
