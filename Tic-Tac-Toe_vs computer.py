@@ -119,3 +119,14 @@ def win_check(human,computer):
             return False
     return True
 
+
+def winning_computer_move(mark,board):
+    '''This function check possible winning combos for the computer mark index'''
+
+    #Provide all the possible winning combinations, vertical, horizontal and diagonal
+    winning_combos = [[1,2,3],[4,5,6],[7,8,9],[1,4,7],[2,5,8],[3,6,9],[1,5,9],[3,5,7]]
+    # Then we check if the spots from computer result to a win combo
+    for win_spot in winning_combos:
+        # Each position in the above lists should be matching combo and comes from the human input
+        if board[win_spot[0]] == board[win_spot[1]] == board[win_spot[2]] == mark:
+            return True
