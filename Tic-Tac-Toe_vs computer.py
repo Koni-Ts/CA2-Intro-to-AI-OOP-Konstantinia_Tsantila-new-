@@ -171,3 +171,53 @@ def computer_input (computer,human,board):
         return False
 
 
+
+# and then we have the final function of our main game human vs computer
+def main_human_vs_computer():
+    ''' Main game algorithm'''
+    global board
+    play=True
+    # we start with an empty board
+    board= [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ']
+    # Define the players symbols and who starts
+    human,computer = user_symbol_choice()
+    display_board()
+    while play:
+        # we examine the case if human is x
+        if human == "x":
+            # we assign to x mark the human input function
+            x = human_position_input(human)
+            # we replace the human position input to the board
+            board[x] = human
+            # Then we display the board after the human move
+            display_board()
+            # After we check if this led to a winning move
+            play = win_check (human,computer)
+            if play:
+                # then it's computer's turn so we call the function and assign it to o mark
+                o = computer_input (computer,human,board)
+                # we complete the board with computer mark
+                board[o] = computer
+                # Then we display the board after the computer move
+                display_board()
+            # After we check if this led to a winning move again
+                play = win_check (human,computer)
+        # we examine the case where human is o
+        else:
+            x = computer_input (computer,human,board)
+            # we replace the computer position inout to the board
+            board[x] = computer
+            # Then we display the board after the computer move
+            display_board()
+            # After we check if this led to a winning move
+            play = win_check (computer,human)
+            if play:
+                # then it's humman's turn so we call the function
+                o = human_position_input (human)
+                # we complete the board with human mark
+                board[o]=human
+                # Then we display the board after the computer move
+                display_board()
+                # After we check if this led to a winning move again
+                play = win_check (computer,human)
+
