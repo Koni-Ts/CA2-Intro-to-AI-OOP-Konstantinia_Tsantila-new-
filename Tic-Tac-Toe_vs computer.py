@@ -130,3 +130,17 @@ def winning_computer_move(mark,board):
         # Each position in the above lists should be matching combo and comes from the human input
         if board[win_spot[0]] == board[win_spot[1]] == board[win_spot[2]] == mark:
             return True
+
+
+def win_move(i,board,mark):
+    '''This function checks for the best possible winning move  
+        by creating a temporary board for checking possible outcomes'''
+    # we create a temporary board so we don't tamper with the original game board and we create a list of our board in it to check for possible wiining moves
+    temporary_board = list(board)
+    # we assign our index Value to it as a computer move
+    temporary_board[i] = mark
+    # we call another function where we check if computer mark index is a winning move for computer and we call for true or False against our temporary_board
+    if winning_computer_move(mark,temporary_board):
+        return True
+    else:
+        return False
