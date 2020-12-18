@@ -1,3 +1,24 @@
+# Starting with a function that introduces the game, explains some rules and gives reference to our board positions
+def intro():
+    '''
+        This function will introduce the user to the game and some simple rules
+    '''
+    print ("Hello welcome to Tic Tac Toe game!")
+    print (" ")
+    print ("You will be asked to choose between X and O and take turns marking the spaces in a 3×3 grid.")
+    print ("The player who succeeds in placing three of their marks in a horizontal, vertical, or diagonal row is the winner.")
+    print ("The positions on the board are represented by numbers, see the board below for refference")
+    print('     |    |      ') 
+    print('  1  | 2  | 3    ')
+    print("---------------- ")
+    print("     |    |      ")
+    print("  4  | 5  | 6    ")
+    print("---------------- ")
+    print("     |    |      ")
+    print("  7  | 8  | 9    ")
+    print (" ")
+    print ("Good luck! ")
+
 # A board to dislay during the game after each player move
 def display_board():
 
@@ -162,7 +183,7 @@ def computer_input (computer,human,board):
             # if computer can win in this case we return the index value to the board to prevent human from doing that move
             return i
     # If none of the above is the case then our index will be returned into the best possible position by defining a priority list below based on game knoweledge, centre spot is the most advantageous (5) then corners (1,3,7,9) and finally the middle ones (2,4,6,8)
-    for i in [5,1,7,3,9,2,8,6,4]:
+    for i in [5,1,3,7,9,2,4,6,8]:
         # check if board is empty there
         if board[i] == " ":
         # if the board in position i (index) is empty then return the value there
@@ -220,4 +241,10 @@ def main_human_vs_computer():
                 display_board()
                 # After we check if this led to a winning move again
                 play = win_check (computer,human)
+
+
+# we call the intro function
+intro()
+# we call the final game funcrion
+main_human_vs_computer()
 
