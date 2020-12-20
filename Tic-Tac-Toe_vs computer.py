@@ -138,7 +138,8 @@ def win_check(human,computer):
         #And we ask human if wants to play again with assigning our function in a value ask
         if not new_game_ask():
             return False
-    return True
+    else:
+        return True
 
 
 def winning_computer_move(mark,board):
@@ -171,19 +172,19 @@ def win_move(i,board,mark):
 def computer_input (computer,human,board):
     ''' Computer move function'''
     # we create an index for computer input and give it a range as our board will have from 1 to 9 positions
-    for i in range (1,10):
+    for i in range (1,9):
         # we check if the board of that index is a free space and if it's a winning move for computer (which we define above)
         if board[i] == " " and win_move(i,board,computer):
             # if computer can win in this case we return the index valur to the board
             return i
     # Then we check if we can block a human winning move
-    for i in range (1,10):
+    for i in range (1,9):
         # we check if the board of that index is a free space and if it's a winning move for Human 
         if board[i] == " " and win_move(i,board,human):
             # if computer can win in this case we return the index value to the board to prevent human from doing that move
             return i
     # If none of the above is the case then our index will be returned into the best possible position by defining a priority list below based on game knoweledge, centre spot is the most advantageous (5) then corners (1,3,7,9) and finally the middle ones (2,4,6,8)
-    for i in [5,1,3,7,9,2,4,6,8]:
+    for i in [5,1,7,3,9,2,4,6,8]:
         # check if board is empty there
         if board[i] == " ":
         # if the board in position i (index) is empty then return the value there
@@ -241,6 +242,11 @@ def main_human_vs_computer():
                 display_board()
                 # After we check if this led to a winning move again
                 play = win_check (computer,human)
+    	    if " " not in board:
+                play = win_check (computer,human)
+
+
+
 
 
 # we call the intro function
